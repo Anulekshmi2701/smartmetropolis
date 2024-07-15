@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+        <html lang="en">
+        
+        <head>
+          <style>
+          .blog-item {
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.blog-img {
+    overflow: hidden;
+}
+
+.blog-img img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.blog-item:hover .blog-img img {
+    transform: scale(1.1);
+}
+
+.blog-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+      </style>
+           
+            <meta charset="utf-8">
+            <title>Smart Metropolis</title>
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta content="" name="keywords">
+            <meta content="" name="description">
+        
+            <link rel="icon" type="img/x-icon" href="img/idea.png">
+        
+        
+            <!-- Google Web Fonts -->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">  
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        
+            <!-- Icon Font Stylesheet -->
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        
+            <!-- Libraries Stylesheet -->
+            <link href="lib/animate/animate.min.css" rel="stylesheet">
+            <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+            <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        
+            <!-- Customized Bootstrap Stylesheet -->
+            <link href="education/bootstrap.min.css" rel="stylesheet">
+        
+            <!-- Template Stylesheet -->
+            <link href="education/style.css" rel="stylesheet">
+           
+            
+        </head>
+        
+        <body>
+            
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+       
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+
+    </head>
+
+    <body class="back">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+       
+            <div class="container-fluid  px-0" style="background-color: #050C9C;">
+                <div class="row g-0 d-none d-lg-flex">
+                    <div class="col-lg-6 ps-5 text-start">
+                        <div class="h-100 d-inline-flex align-items-center text-white">
+                            <span>Follow Us:</span>
+                            <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-link text-light" href=""><i class="fas fa-map-marker-alt"></i></a>
+                        </div>
+                     
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- Topbar End -->
+        
+        
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
+                <a href="index.html" class="navbar-brand ps-5 me-0">
+                   
+                    <img src="img/logo.png" alt="" width="290px" height="75px">
+                </a>
+                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto p-4 p-lg-0">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <div class="dropdown">
+                          <a href="#" class="nav-item nav-link dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Schools and Universities</a>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <li><a class="dropdown-item" href="#">Colleges</a></li>
+                              <li><a class="dropdown-item" href="#">Schools</a></li>
+                          </ul>
+                      </div>
+                      
+                        <a href="" class="nav-item nav-link">Training and Skill Development</a>
+                        <!-- <a href="" class="nav-item nav-link">Career Services</a> -->
+                        <a href="" class="nav-item nav-link">Library</a>
+                        <a href="" class="nav-item nav-link">Coaching Centers</a>                   
+                </div>
+            </nav>
+            <section class="home_banner_area">
+              <div class="banner_inner">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="banner_content text-center">
+                        <!-- <p class="text-uppercase">
+                          Colleges 
+                        </p> -->
+                        <!-- <h2 class="text-uppercase mt-4 mb-5">
+                          One Step Ahead This Season
+                        </h2> -->
+                        <div>
+                          <!-- <a href="#" class="primary-btn2 mb-3 mb-sm-0">learn more</a>
+                          <a href="#" class="primary-btn ml-sm-3 ml-0">see course</a> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <div class="container-fluid blog py-5">
+              <div class="container py-5">
+                  <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                      
+                      <h1 class="display-3 mb-4" style="text-align: center;">Best Colleges in Thiruvananthapuram</h1>
+                      <!-- <p class="mb-0">Our Smart Metropolis platform provides comprehensive details about Trivandrum City Hospital. You can access information about hospital departments, specialist doctors, visiting hours, and emergency services.</p> -->
+                  </div>
+                  <div class="row g-4 justify-content-center">
+                      <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
+                          <div class="blog-item rounded">
+                              <div class="blog-img">
+                                  <img src="https://nss.org.in/wp-content/uploads/2018/09/MG-1.jpg" class="img-fluid w-100" alt="Image">
+                              </div>
+                              <div class="blog-centent p-4">
+                                 
+                                  <a href="#" class="h4">Mahatma Gandhi College Thiruvananthapuram</a>
+                                  <p class="my-4" style="text-align: justify;">Mahatma Gandhi College functions with the objective of providing
+                                     value added quality education to all, with special emphasis on the economically
+                                      poor sections of the society, upholding the motto “Sa Vidya Ya Vimukthaye”.
+                                       It has 13 UG, 10 PG and 7 research programmes in the faculties of basic science, 
+                                       humanities and social sciences with more than 2500 students pursuing their studies
+                                        in various disciplines.</p>
+                                
+                              </div>
+                          </div>
+                      </div>
+  
+                      <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
+                          <div class="blog-item rounded">
+                              <div class="blog-img">
+                                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Mar_Ivanios_College_Thiruvananthapuram.jpg/1200px-Mar_Ivanios_College_Thiruvananthapuram.jpg" class="img-fluid w-100" alt="Image">
+                              </div>
+                              <div class="blog-centent p-4">
+                                  
+                                  <a href="#" class="h4">Mar Ivanios College Nalanchira</a>
+                                  <p class="my-4" style="text-align:justify;">Mar Ivanios College was established in 1949 and pursues
+                                     excellence upholding the far-sighted vision of our revered Founder,
+                                      Servant of God Archbishop Mar Ivanios.The College is the first Institution
+                                       in the University of Kerala to receive accreditation from the National Assessment
+                                        and Accreditation Council in 1999. The College was also the first to be
+                                         re-assessed and re-accredited with ‘A’ Grade by NAAC in 2004. </p>
+                                 
+                              </div>
+                          </div>
+                      </div>
+  
+                      <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="blog-item rounded">
+                            <div class="blog-img">
+                                <img src="https://images.collegedunia.com/public/college_data/images/campusimage/1455183614_ul5200719105919arc_pht-resize-700x.jpg" class="img-fluid w-100" alt="Image">
+                            </div>
+                            <div class="blog-centent p-4">
+                                
+                                <a href="#" class="h4">Govt Arts College Thiruvanathapuram</a>
+                                <p class="my-4" style="text-align:justify;">Government Arts College Thiruvananthapuram,also known as H.H.The Maharaja's College for Arts, 
+                                  is one of the oldest undergraduate and postgraduate, coeducational college located in Trivandrum, Kerala.It was
+                                   established in the year 1924. The college is affiliated with Kerala University.Regularly securing Kerala University
+                                    ranks for various courses is a clear indicator of academic performance.</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
+                      <div class="blog-item rounded">
+                          <div class="blog-img">
+                              <img src="https://images.collegedunia.com/public/college_data/images/campusimage/1455183614_ul5200719105919arc_pht-resize-700x.jpg" class="img-fluid w-100" alt="Image">
+                          </div>
+                          <div class="blog-centent p-4">
+                              
+                              <a href="#" class="h4">Govt Arts College Thiruvanathapuram</a>
+                              <p class="my-4" style="text-align:justify;">Government Arts College Thiruvananthapuram,also known as H.H.The Maharaja's College for Arts, 
+                                is one of the oldest undergraduate and postgraduate, coeducational college located in Trivandrum, Kerala.It was
+                                 established in the year 1924. The college is affiliated with Kerala University.Regularly securing Kerala University
+                                  ranks for various courses is a clear indicator of academic performance.</p>
+                             
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
+          
+          <footer class="ftco-footer ftco-section img" style="background-color: #8B93FF;" >
+            <div class="overlay"></div>
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-md-3">
+                  <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">About Us</h2>
+                    <p>Discover the heart of Kerala at Trivandrum, where tradition meets modernity amidst the lush landscapes of India's southwestern coast.</p>
+                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                      <li class="ftco-animate"><a href="#"><span class="fab fa-twitter"></span></a></li>
+                      <li class="ftco-animate"><a href="#"><span class="fab fa-facebook"></span></a></li>
+                      <li class="ftco-animate"><a href="#"><span class="fab fa-instagram"></span></a></li>
+                      <li class="ftco-animate"><a href="#"><span class="fab fa-linkedin"></span></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="ftco-footer-widget mb-4 ml-md-5">
+                    <h2 class="ftco-heading-2">Main Links</h2>
+                    <ul class="list-unstyled">
+                      <li><a href="index.html" class="py-2 d-block">Home</a></li>
+                      <li><a href="about.html" class="py-2 d-block">About</a></li>
+                      <li><a href="tourism.html" class="py-2 d-block">Tourism</a></li>
+                      <li><a href="transport.html" class="py-2 d-block">Transport</a></li>
+                      <li><a href="hospital.html" class="py-2 d-block">Hospital</a></li>
+                      <li><a href="contact.html" class="py-2 d-block">Contact</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Tourism</h2>
+                    <ul class="list-unstyled">
+                      <li><a href="tourism.html" class="py-2 d-block">Tourism</a></li>
+                      <li><a href="TouristSpot.html" class="py-2 d-block">Tourism Spots</a></li>
+                      <li><a href="hotel.html" class="py-2 d-block">Hotels</a></li>
+                      <li><a href="Theater.html" class="py-2 d-block">Theater</a></li>
+                      <li><a href="ShoppingCenters.html" class="py-2 d-block">Shopping Centers</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Education</h2>
+                    <ul class="list-unstyled">
+                      <li><a href="school.html" class="py-2 d-block">School</a></li>
+                      <li><a href="university.html" class="py-2 d-block">University</a></li>
+                      <li><a href="skill-development.html" class="py-2 d-block">Skill & Development</a></li>
+                      <li><a href="library.html" class="py-2 d-block">Library</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Additional Links</h2>
+                    <ul class="list-unstyled">
+                      <li><a href="location-finding.html" class="py-2 d-block">Location Finding</a></li>
+                      <li><a href="language-translator.html" class="py-2 d-block">Language Translator</a></li>
+                    </ul>
+                  </div>
+                 
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 " >
+                  <p style="text-align: center;">&copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by Smart Metropolis</p>
+                </div>
+              </div>
+            </div>
+           
+          </footer>
+          
+            
+         
+          
+  
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
+      ><i class="bi bi-arrow-up"></i
+    ></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/education.js"></script>
+  </body>
+</html>
