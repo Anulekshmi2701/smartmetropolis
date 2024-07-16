@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Theater</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="tourism/animate.css">
+    
+    <link rel="stylesheet" href="tourism/owl.carousel.min.css">
+    <link rel="stylesheet" href="tourism/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/magnific-popup.css">
+
+    <link rel="stylesheet" href="tourism/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="tourism/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="tourism/flaticon.css">
+    <link rel="stylesheet" href="tourism/style.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/all.min.css">
+
+    
+    <style>
+      .modal {
+         display: none;
+         position: fixed;
+         z-index: 1;
+         left: 0;
+         top: 0;
+         width: 100%;
+         height: 100%;
+         overflow: auto;
+         background-color: rgb(0, 0, 0);
+         background-color: rgba(0, 0, 0, 0.4);
+     }
+
+     .modal-content {
+         background-color: #fefefe;
+         margin: 5% auto;
+         padding: 20px;
+         border: 1px solid #888;
+         width: 80%;
+         position: relative;
+     }
+
+     .close {
+         color: #aaa;
+         float: right;
+         font-size: 28px;
+         font-weight: bold;
+     }
+
+     .close:hover,
+     .close:focus {
+         color: black;
+         text-decoration: none;
+         cursor: pointer;
+     }
+
+     .fade-images {
+         position: relative;
+         width: 100%;
+         height: 300px; /* Adjust as needed */
+     }
+
+     .fade-images img {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         opacity: 0;
+         transition: opacity 1s ease-in-out;
+     }
+
+     .fade-images img.active {
+         opacity: 1;
+     }
+      .content-section {
+          display: none;
+      }
+      .content-section.active {
+          display: block;
+      }
+
+  </style>
+
+
+</head>
+<body>
+ <!-- <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+   <div class="container">
+     <a class="navbar-brand" href="index.html">Pacific<span>Travel Agency</span></a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="oi oi-menu"></span> Menu
+   </button>
+
+   <div class="collapse navbar-collapse" id="ftco-nav">
+       <ul class="navbar-nav ml-auto">
+         <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+         <li class="nav-item active"><a href="destination.html" class="nav-link">Destination</a></li>
+         <li class="nav-item"><a href="hotel.html" class="nav-link">Hotel</a></li>
+         <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+     </ul>
+ </div>
+</div>
+</nav> -->
+<!-- END nav -->
+
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('img/ct.webp');">
+   <div class="overlay"></div>
+   <div class="container">
+     <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+       <div class="col-md-9 ftco-animate pb-5 text-center">
+         <p class="breadcrumbs">
+           <span class="mr-2">
+             <a href="index.html">Home <i class="fa fa-chevron-right"></i></a>
+           </span>
+           <span>Theater<i class="fa fa-chevron-right"></i></span>
+         </p>
+         <h1 class="mb-0 bread">Theater</h1>
+       </div>
+     </div>
+   </div>
+</section>
+
+ 
+<!-- Theater Information Section -->
+<div class="container mt-5">
+   <h2 class="text-center mb-5">Explore Our Theaters</h2>
+   <div class="row">
+     <div class="col-lg-4 col-md-6 mb-4">
+       <div class="card shadow-sm">
+         <img src="theater1.jpg" class="card-img-top" alt="Theater 1">
+         <div class="card-body">
+           <h5 class="card-title">Theater Name 1</h5>
+           <p class="card-text">Location: City, Country</p>
+           <p class="card-text">Capacity: 200 seats</p>
+           <a href="#" class="btn btn-primary">View Details</a>
+         </div>
+       </div>
+     </div>
+     <div class="col-lg-4 col-md-6 mb-4">
+       <div class="card shadow-sm">
+         <img src="theater2.jpg" class="card-img-top" alt="Theater 2">
+         <div class="card-body">
+           <h5 class="card-title">Theater Name 2</h5>
+           <p class="card-text">Location: City, Country</p>
+           <p class="card-text">Capacity: 300 seats</p>
+           <a href="#" class="btn btn-primary">View Details</a>
+         </div>
+       </div>
+     </div>
+     <div class="col-lg-4 col-md-6 mb-4">
+       <div class="card shadow-sm">
+         <img src="theater3.jpg" class="card-img-top" alt="Theater 3">
+         <div class="card-body">
+           <h5 class="card-title">Theater Name 3</h5>
+           <p class="card-text">Location: City, Country</p>
+           <p class="card-text">Capacity: 250 seats</p>
+           <a href="#" class="btn btn-primary">View Details</a>
+         </div>
+       </div>
+     </div>
+     <!-- Add more theater cards as needed -->
+   </div>
+ </div>
+
+
+
+
+<!-- <section class="ftco-section">
+  <div class="container">
+   <div class="row">
+      <div class="col-md-4 ftco-animate">
+         <div class="project-wrap">
+            <a href="#" class="img" style="background-image: url(images/your-image.jpg);">
+               <div class="overlay"></div>
+               <div class="text text-center">
+                  <h3 class="project-title">Project Title</h3>
+                  <p class="project-description">Project description goes here.</p>
+                  <a href="#" class="btn btn-primary">Read more</a>
+               </div>
+            </a>
+         </div>
+      </div>
+   </div>
+        </div>
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(images/malloftravancore.jpg);" onclick="openModal('modal2')">
+                 <span class="price">Mall Of Travancore</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">10:00 am – 10:00 pm</span>
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> International Airport Rd,Thiruvananthapuram</p>
+                 <div class="text-center">
+                  <p><a href="#" class="btn btn-primary" onclick="openModal('modal2')">Read more</a></p>
+                  </div>
+              </div>
+           </div>
+        </div>
+
+        
+        <div class="col-md-4 ftco-animate">
+         <div class="project-wrap">
+            <a href="#" class="img" style="background-image: url(images/centralmall.jpg);" onclick="openModal('modal3')">
+               <span class="price">Centro Mall</span>
+            </a>
+            <div class="text p-4">
+               <span class="days">11:00 AM - 10:00 PM</span>
+             
+               <p class="location"><span class="fa fa-map-marker text-dark"></span> Palayam - Airv mmport Road,Thiruvananthapuram,</p>
+               <div class="text-center">
+                <p><a href="#" class="btn btn-primary" onclick="openModal('modal3')">Read more</a></p>
+                </div>
+            </div>
+         </div>
+      </div>
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(images/aveneue.jpg);" onclick="openModal('modal4')">
+                 <span class="price">Avenue Centre Shoppe Multi Branded Shopping Complex</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">7.15 AM - 10:00 PM</span>
+                
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span>SH 1, Mannanthala Junction,Thiruvananthapuram</p>
+                 <div class="text-center">
+                  <p><a href="#" class="btn btn-primary" onclick="openModal('modal4')">Read more</a></p>
+                  </div>
+              </div>
+           </div>
+        </div>
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(images/ascm.jpg);" onclick="openModal('modal5')">
+                 <span class="price">Attukal Shopping Complex</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">9.00 AM - 09:00 PM</span>
+            
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> Near Padmanabhaswamy Temple,Thiruvananthapuram</p>
+                 <div class="text-center">
+                  <p><a href="#" class="btn btn-primary" onclick="openModal('modal5')">Read more</a></p>
+                  </div>
+              </div>
+           </div>
+        </div>
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(images/saphalyam.jpg);" onclick="openModal('modal6')">
+                 <span class="price">Saphalyam Shopping Complex </span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">10:00 AM - 9:00 PM</span>
+          
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> University of Kerala Palayam, Thiruvananthapuram</p>
+                 <div class="text-center">
+                  <p><a href="#" class="btn btn-primary" onclick="openModal('modal6')">Read more</a></p>
+                  </div>
+              </div>
+           </div>
+        </div>
+
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(images/qrsm.jpg);" onclick="openModal('modal7')">
+                 <span class="price">QRS Shopping mall</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">10:00 AM - 8:00 PM</span>
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> Mahatma GandhiRoad, Thiruvananthapuram,</p>
+                 <div class="text-center">
+                  <p><a href="#" class="btn btn-primary" onclick="openModal('modal7')">Read more</a></p>
+                  </div>
+              </div>
+           </div>
+        </div>
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(images/kdm.jpg);" onclick="openModal('modal8')">
+                 <span class="price">Kedaram Shopping Complex</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">09:30 AM - 8:00 PM</span>
+               
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> GWHQ+P75, Kesavadasapuram,TVM</p>
+                 <div class="text-center">
+                  <p><a href="#" class="btn btn-primary" onclick="openModal('modal8')">Read more</a></p>
+                  </div>
+              </div>
+           </div>
+        </div>
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(images/variety.jpg);" onclick="openModal('modal9')">
+                 <span class="price">Variety Mall</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">09:30 AM - 08:30 PM</span>
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> General Hospital Rd, Thiruvananthapuram</p>
+                 <div class="text-center">
+                  <p><a href="#" class="btn btn-primary" onclick="openModal('modal9')">Read more</a></p>
+                  </div>
+              </div>
+           </div>
+        </div> -->
+        <!-- Add more destinations as needed -->
+     </div>
+     <div class="row mt-5">
+      <div class="col text-center">
+          <div class="block-27">
+              <ul>
+                  <li><a href="#" onclick="navigatePage('<')">&lt;</a></li>
+                  <li class="active"><a href="page1.html" onclick="loadContent(1)">1</a></li>
+                  <li><a href="page2.html" onclick="loadContent(2)">2</a></li>
+                  <li><a href="#" onclick="navigatePage('>')">&gt;</a></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+     </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- Modals -->
+<!--<div id="modal1" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal1')">&times;</span>
+       <h2>Lulu Mall Trivandrum</h2>
+       
+       <div class="fade-images">
+           <img src="images/l4.jpg" alt="Image 1" class="active">
+           <img src="images/l2.jpg" alt="Image 2">
+           <img src="images/l3.jpg" alt="Image 3">
+           <img src="images/l1.jpg" alt="Image 4">
+       </div>
+       <p>Lulu Mall Thiruvananthapuram is a shopping mall located in Thiruvananthapuram, the capital city of Kerala, India.
+         With a total built up area of 2,000,000 sq ft (190,000 m2)[4] .The shopping mall is located along the side of
+         National Highway 66 at Aakkulam near Technopark the biggest IT park in Kerala. The mall has around 300 national 
+         and international brands and 12 anchor stores including a Lulu Hypermarket, largest indoor entertainment zone in
+         the country,[5] a multilevel car parking space for more than 3,800 cars. It also has a food court with a capacity
+         for 2500 people serving various regional, international and specialty cuisines. The mall houses Kerala's only PVR
+         Superplex having 12 screens, among them is the state's only IMAX screen[6] by PVR cinemas.[7] The property is 
+         owned and managed by M.A. Yusuff Ali, the chairman and managing director of LuLu Group International.
+     </p>
+   </div>
+</div>
+
+<div id="modal2" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal2')">&times;</span>
+       <h2>Mall Of Travancore</h2>
+       <div class="fade-images">
+         <img src="images/mt1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="images/mt2.jpg" alt="Banaue Rice Terraces">
+         <img src="images/mt3.jpg" alt="Banaue Rice Terraces">
+         <img src="images/mt4.jpg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>The first mall in Trivandrum Located in the heart of Kerala’s capital city, a Malabar group venture, 
+        the striking Mall of Travancore, that opened its doors on March 23, 2018, has become the unrivalled 
+        destination in Trivandrum, to experience shopping, dining & entertainment under one roof. The first green mall, 
+        we are an iconic landmark, being the first of its kind in Trivandrum, situated right in front of the Trivandrum 
+        International Airport.</p>
+       
+   </div>
+</div>
+
+<div id="modal3" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal3')">&times;</span>
+       <h2>Centro Mall</h2>
+       <div class="fade-images">
+         <img src="images/cm1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="images/cm2.jpg" alt="Banaue Rice Terraces">
+         <img src="images/cm3.jpg" alt="Banaue Rice Terraces">
+         <img src="images/cm4.jpg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>Shop to your heart’s content at Artech World Mall, the latest shopping destination in Trivandrum. 
+        Situated at Pattor, the Artech World Mall is one of the most happening shopping destinations. 
+        Also known as the Central Mall, it features trendy collections in apparel, sportswear, bags, and footwear. 
+        International and domestic brands – including big names like Park Avenue, Lavie, Adidas, Puma, Levi’s and Lee 
+        Cooper have outlets here. Needless to say, the shopping experience will be very unique.
+        The Trivandrum Central Mall is close to the central business district. It is around 3 km from Airport 
+        and about 4 km from the Trivandrum Central railway station. This makes the Trivandrum Central Mall easily 
+        accessible from all parts of the town. The Trivandrum Central Mall at Pattoor fills the big void in having 
+        a mall close to the city.</p>
+       
+   </div>
+</div>
+
+<div id="modal4" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal4')">&times;</span>
+       <h2>Avenue Centre Shoppe Multi Branded Shopping Complex</h2>
+       <div class="fade-images">
+         <img src="images/av1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="images/av2.jpg" alt="Banaue Rice Terraces">
+         <img src="images/av3.jpg" alt="Banaue Rice Terraces">
+         <img src="images/av4.jpg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>If there's one thing that has the power to transform a dull day, it's shopping. 
+        However bad your mood is, once you get some retail therapy going, everything seems better. 
+        Sure, things may still be the same once you go back to reality. But, why ruin a moment by just worrying? 
+        Shopping centres have become so popular nowadays because, unlike individual shops, they offer a
+        holistic experience. So, if you want to soak in the experiences of Shopping Centres, 
+        we suggest you check out Avenue Centre Shoppe Multi Branded Shopping Complex in Mannanathala, 
+        Thiruvananthapuram. It has received a 3.8 rating. Come here to experience the joys of retail therapy!</p>
+       
+   </div>
+</div>
+
+<div id="modal5" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal5')">&times;</span>
+       <h2>Attukal Shopping Complex</h2>
+       <div class="fade-images">
+         <img src="images/asc1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="images/asc2.jpg" alt="Banaue Rice Terraces">
+         <img src="images/asc4.jpg" alt="Banaue Rice Terraces">
+         <img src="images/attukalsc.jpeg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>Attukal Shopping Center is a multi-story shopping complex situated inside the historic East Fort and is 
+        accessibly through the Vettimurichan Kotta. Centrally located, this shopping center is among the premier 
+        shopping hubs in the city with major showrooms such as Josco Diamonds and Alpaatt Fashion Jewelry, textile, 
+        handicraft and garment shops, wedding card manufacturers and gift shops, all under one roof. An ideal place 
+        to stop and spend your day by going through some of the best designer jewellery and clothes you would find in 
+        the city.</p>
+       
+   </div>
+</div>
+
+<div id="modal6" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal6')">&times;</span>
+       <h2>Saphalyam Shopping Complex</h2>
+       <div class="fade-images">
+         <img src="images/sp1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="images/sp2.jpg" alt="Banaue Rice Terraces">
+         <img src="images/sp3.jpg" alt="Banaue Rice Terraces">
+         <img src="images/sp4.jpg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>Built by TRIDA, Saphalyam is an expansive market complex. Shop for books, antiques, home decor, clothes, 
+        shoes, accessories and even flowers among other products. Apart from the various merchandise shops, 
+        the complex also houses vegetable, grocery and fish stalls. The mall houses electronic and mobile shops too. 
+        The mall is also home to a number of eateries serving up everything from Italian and American fare to traditional
+         Indian delicacies, where you can recharge your batteries after the retail therapy.</p>
+       
+   </div>
+</div>
+
+<div id="modal7" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal7')">&times;</span>
+       <h2>QRS Shopping Mall</h2>
+       <div class="fade-images">
+         <img src="images/q1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="images/q2.jpg" alt="Banaue Rice Terraces">
+         <img src="images/q3.jpg" alt="Banaue Rice Terraces">
+         <img src="images/q4.jpg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>Taking care of all your electronic needs couldn't have been more easier than shopping at QRS Shopping Mall.
+         Offering a range of goodies like mobile phones, tablets, cameras, radios and music players among other products,
+          the mega-store houses every kind of electronic item under one roof. Apart from the electronic, you can also buy
+           water purifiers and heaters, cooking appliances, personal care products and even stuff like car washers. 
+           Sourcing products from a number of high-end as well as affordable brands LG, Bajaj, Micromax, Casio and many 
+           more, the shopping center can easily cater to any kind of budget too. With so much on offer, you are sure to
+            find something that suits your preferences at the QRS Shopping Mall.</p>
+       
+   </div>
+</div>
+
+<div id="modal8" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal8')">&times;</span>
+       <h2>Kedaram Shopping Complex</h2>
+       <div class="fade-images">
+         <img src="images/kd1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="images/kd2.jpg" alt="Banaue Rice Terraces">
+         <img src="images/kd3.jpg" alt="Banaue Rice Terraces">
+         <img src="images/kd4.jpg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>Kedaram Trida's Shopping Center in Kesavadasapuram, Thiruvananthapuram is a top player in the category Shopping
+         Centres in the Thiruvananthapuram. This well-known establishment acts as a one-stop destination servicing 
+         customers both local and from other parts of Thiruvananthapuram. Over the course of its journey, this business 
+         has established a firm foothold in it's industry. The belief that customer satisfaction is as important as 
+         their products and services, have helped this establishment garner a vast base of customers, which continues
+          to grow by the day. This business employs individuals that are dedicated towards their respective roles and 
+          put in a lot of effort to achieve the common vision and larger goals of the company. In the near future, this
+           business aims to expand its line of products and services and cater to a larger client base. 
+           In Thiruvananthapuram, this establishment occupies a prominent location in Kesavadasapuram. 
+           It is an effortless task in commuting to this establishment as there are various modes of transport readily 
+           available. It is at National Highway 47, Kesavadasapuram Junction, which makes it easy for first-time 
+           visitors in locating this establishment. It is known to provide top service in the following categories: 
+           Shopping Centres.</p>
+       
+   </div>
+</div>
+
+<div id="modal9" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal9')">&times;</span>
+       <h2>Variety Mall</h2>
+       <div class="fade-images">
+         <img src="images/vm1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="images/vm2.jpg" alt="Banaue Rice Terraces">
+         <img src="images/vm3.jpg" alt="Banaue Rice Terraces">
+         <img src="images/vm4.jpg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>Over the past 30 years, the Variety Group has grown to become the leading Fashion Jewellery, 
+        Beauty & Lifestyle showroom in Trivandrum, the capital city of Kerala.At Variety Mall, we create an 
+        exotic ambience of shopping and a quality of customer service apart from the range of products we offer.
+         We showcase highly prestigious beauty products from around the globe. Our talented workforce and our rich 
+         heritage have gained a good number of customers. We have always been committed to providing the best shopping
+          experience.Our customer is our best advertisement. Most of our customers frequently visit Variety Mall to
+           update the latest trends in the fashion world. Our goal is to meet and exceed your needs and expectations, 
+           by providing you with superior products and services.</p>
+       
+   </div>
+</div>
+
+<script>
+   function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+  }
+
+  function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+  }
+
+  function initFadeImages(modalId) {
+      let currentIndex = 0;
+      const images = document.querySelectorAll(`#${modalId} .fade-images img`);
+      const totalImages = images.length;
+
+      function showNextImage() {
+          images[currentIndex].classList.remove('active');
+          currentIndex = (currentIndex + 1) % totalImages;
+          images[currentIndex].classList.add('active');
+      }
+
+      setInterval(showNextImage, 800); // Change image every 3 seconds
+  }
+
+  // Initialize fade image effects for each modal
+  initFadeImages('modal1');
+  initFadeImages('modal2');
+  initFadeImages('modal3');
+  initFadeImages('modal4');
+  initFadeImages('modal5');
+  initFadeImages('modal6');
+  initFadeImages('modal7');
+  initFadeImages('modal8');
+  initFadeImages('modal9');
+</script>
+<script>
+   function openModal(modalId) {
+       document.getElementById(modalId).style.display = "block";
+   }
+
+   function closeModal(modalId) {
+       document.getElementById(modalId).style.display = "none";
+   }
+</script>
+
+<!--Modal End-->
+
+
+
+<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(img/bg_3.jpg);">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md pt-5">
+        <div class="ftco-footer-widget pt-md-5 mb-4">
+          <h2 class="ftco-heading-2">About</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
+            <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-md pt-5 border-left">
+    <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
+      <h2 class="ftco-heading-2">Infromation</h2>
+      <ul class="list-unstyled">
+        <li><a href="#" class="py-2 d-block">Online Enquiry</a></li>
+        <li><a href="#" class="py-2 d-block">General Enquiries</a></li>
+        <li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
+        <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
+        <li><a href="#" class="py-2 d-block">Refund Policy</a></li>
+        <li><a href="#" class="py-2 d-block">Call Us</a></li>
+    </ul>
+</div>
+</div>
+<div class="col-md pt-5 border-left">
+   <div class="ftco-footer-widget pt-md-5 mb-4">
+      <h2 class="ftco-heading-2">Experience</h2>
+      <ul class="list-unstyled">
+        <li><a href="#" class="py-2 d-block">Adventure</a></li>
+        <li><a href="#" class="py-2 d-block">Hotel and Restaurant</a></li>
+        <li><a href="#" class="py-2 d-block">Beach</a></li>
+        <li><a href="#" class="py-2 d-block">Nature</a></li>
+        <li><a href="#" class="py-2 d-block">Camping</a></li>
+        <li><a href="#" class="py-2 d-block">Party</a></li>
+    </ul>
+</div>
+</div>
+<div class="col-md pt-5 border-left">
+    <div class="ftco-footer-widget pt-md-5 mb-4">
+       <h2 class="ftco-heading-2">Have a Questions?</h2>
+       <div class="block-23 mb-3">
+         <ul>
+           <li><span class="icon fa fa-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+           <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+           <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+       </ul>
+   </div>
+</div>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+
+    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+  </div>
+</div>
+</div>
+</footer>
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+<script>
+   function loadContent(page, pageNumber) {
+       var xhttp = new XMLHttpRequest();
+       xhttp.onreadystatechange = function() {
+           if (this.readyState == 4 && this.status == 200) {
+               document.getElementById("content-container").innerHTML = this.responseText;
+           }
+       };
+       xhttp.open("GET", page, true);
+       xhttp.send();
+       
+       // Update active state of pagination links
+       var paginationLinks = document.querySelectorAll('.pagination ul li');
+       paginationLinks.forEach(function(link) {
+           link.classList.remove('active');
+       });
+       paginationLinks[pageNumber - 1].classList.add('active');
+   }
+</script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/google-map.js"></script>
+<script src="js/tourism.js"></script>
+
+</body>
+</html>
