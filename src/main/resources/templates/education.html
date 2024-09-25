@@ -1,0 +1,1225 @@
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Smart Metropolis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <link rel="icon" type="img/x-icon" href="img/idea.png">
+    
+    <!-- Include Bootstrap CSS and Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+    
+ .blur-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+   .notification-box {
+    display: none;
+    position: fixed;
+    top: 35%; /* Adjusted to be slightly above the center */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 400px; /* Increased width */
+    height: 300px; /* Increased height */
+    text-align: center;
+    z-index: 3;
+}
+
+.notification-box .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Close button on the right */
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ff4c4c;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.notification-box .close-btn:hover {
+    transform: scale(1.2);
+    color: #ff0000;
+}
+
+    .notification-box.show {
+        display: block;
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+
+    .stars {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .star {
+        font-size: 30px;
+        cursor: pointer;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .star:hover {
+        transform: scale(1.5) rotate(15deg);
+        color: #ffcc00;
+    }
+
+    .star.selected {
+        color: #ffcc00;
+        transform: scale(1.3);
+    }
+
+    .emoji {
+        font-size: 50px;
+        margin-top: 15px;
+        height: 100px;
+        width: 100px;
+        background-size: cover;
+        background-position: center;
+        display: none;
+        margin: 20px auto;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .emoji.show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .open-review-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .open-review-btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.1);
+    }
+ /* Centered heading with red underline */
+.section-heading {
+    text-align: center;
+    position: relative;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.section-heading::after {
+    content: "";
+    display: block;
+    width: 15%;
+    height: 3px;
+    background-color: red;
+    margin: 10px auto 0;
+}
+
+/* Scrolling container */
+.scroll-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/* Scrollable content */
+.scroll-content {
+    display: flex;
+    width: calc(300px * 20); /* Adjust based on the total number of duplicated cards */
+    animation: scroll 40s linear infinite; /* Slower speed */
+}
+
+/* Keyframes for scrolling */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause scrolling on hover */
+.scroll-container:hover .scroll-content {
+    animation-play-state: paused; /* Pauses the animation on hover */
+}
+
+/* Card styling */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 0 0 auto;
+    width: 300px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card hover effect */
+.card:hover {
+    transform: translateY(-20px) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Card body */
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Avatar container */
+.avatar-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Avatar image */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Card title */
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    text-align: left;
+}
+
+/* Card text */
+.card-text {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* Image styling */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: auto;
+}
+
+
+
+    .navbar-avatar {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+        }
+
+
+ 
+    
+
+
+    .navbar-avatar {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+        }
+
+
+.small-icon {
+    width: 70px; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.menu {
+    margin: 20px 0; /* Adjust spacing as needed */
+}
+
+.portfolio-item {
+    position: relative;
+    margin: 0 10px;
+}
+
+.image-thumb img {
+    width: 100%; /* Ensure images are responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.blog {
+    padding: 30px 0; /* Reduced padding */
+}
+
+.section-heading {
+    margin-bottom: 20px;
+}
+
+.section-heading h3 {
+    font-size: 24px; /* Adjusted font size */
+    color: #050C9C; /* Your preferred color */
+}
+
+.line-dec {
+    width: 50px; /* Width of the line */
+    height: 3px; /* Height of the line */
+    background: #050C9C; /* Color of the line */
+    margin: 10px auto; /* Centering the line */
+}
+
+.blog-post {
+    background: #fff; /* Background color for blog posts */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 10px; /* Spacing between blog posts */
+    display: flex; /* Flexbox for alignment */
+    flex-direction: column; /* Stack elements vertically */
+    height: 100%; /* Ensure equal height */
+}
+
+.image-thumb img {
+    width: 100%; /* Full width for images */
+    height: 200px; /* Fixed height for uniformity */
+    object-fit: cover; /* Maintain aspect ratio and cover */
+    border-bottom: 2px solid #050C9C; /* Underline effect */
+}
+
+.down-content {
+    padding: 15px; /* Padding around the text */
+    flex-grow: 1; /* Allow content to fill available space */
+}
+
+.down-content p {
+    margin-top: 10px; /* Space above paragraph */
+    line-height: 1.5; /* Improved line spacing for readability */
+    font-size: 14px; /* Font size for better readability */
+}
+
+.category {
+    display: block; /* Block display for category */
+    font-weight: bold; /* Bold category text */
+    color: #050C9C; /* Category text color */
+    margin-bottom: 10px; /* Space below category */
+}
+
+.row {
+    display: flex; /* Flexbox for row */
+    flex-wrap: wrap; /* Wrap items to next line */
+    justify-content: space-between; /* Space between items */
+}
+
+@media (max-width: 768px) {
+    .blog-post {
+        flex: 1 1 calc(50% - 20px); /* Two items per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-post {
+        flex: 1 1 100%; /* Full width on extra small screens */
+    }
+}
+
+.our-portfolio {
+    padding: 30px 0; /* Padding around the section */
+}
+
+.section-heading {
+    text-align: left; /* Align heading to the left */
+    margin-bottom: 20px;
+}
+
+.section-heading h1 {
+    font-size: 24px; /* Adjust font size */
+    color: #050C9C; /* Your preferred color */
+}
+
+.line-dec {
+    width: 50px; /* Width of the line */
+    height: 3px; /* Height of the line */
+    background: #050C9C; /* Color of the line */
+    margin: 10px 0; /* Margin around the line */
+}
+
+.portfolio-items {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+.portfolio-item {
+    background: #fff; /* Background color for portfolio items */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 10px; /* Spacing between portfolio items */
+    flex: 1 1 calc(33.33% - 20px); /* Equal width for three items per row */
+    display: flex; /* Flexbox for alignment */
+    flex-direction: column; /* Stack elements vertically */
+    overflow: hidden; /* Prevent overflow of child elements */
+    transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.image-container img {
+    width: 100%; /* Full width for images */
+    height: 200px; /* Fixed height for uniformity */
+    object-fit: cover; /* Maintain aspect ratio and cover */
+}
+
+.down-content {
+    padding: 15px; /* Padding around the text */
+    flex-grow: 1; /* Allow content to fill available space */
+    text-align: center; /* Center-align the text */
+}
+
+@media (max-width: 768px) {
+    .portfolio-item {
+        flex: 1 1 calc(50% - 20px); /* Two items per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-item {
+        flex: 1 1 100%; /* Full width on extra small screens */
+    }
+}
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+   <div class="container-fluid px-0" style="background-color: #050C9C;" id="navbar">
+    <div class="row g-0 d-none d-lg-flex">
+        <!-- Left side with social media links -->
+        <div class="col-lg-6 ps-5 text-start">
+            <div class="h-100 d-inline-flex align-items-center text-white">
+                <span>Follow Us:</span>
+                <a class="btn btn-link text-light" href="https://www.facebook.com/checkpoint/1501092823525282/?next=https%3A%2F%2Fwww.facebook.com%2Flogin%2F"><i class="fab fa-facebook-f"></i></a>
+            
+                <a class="btn btn-link text-light" href="https://www.youtube.com/channel/UCC_uC3UhrHxNTiD27NwlPng"><i class="fab fa-youtube"></i></a>
+                
+                <a class="btn btn-link text-light" href="https://www.linkedin.com/in/smart-metropolis-902aa332a"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-link text-light" href="#"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-link text-light" th:href="@{https://www.google.com/maps/@8.5762071,76.8606208,13z?authuser=0&entry=ttu}"><i class="fas fa-map-marker-alt"></i></a>
+            </div>
+        </div>
+        
+        <!-- Right side with admin icon -->
+        <div class="col-lg-6 pe-5 text-end">
+            <div class="h-100 d-inline-flex align-items-center text-white">
+               <a class="btn btn-link text-light" th:href="@{/admin/login}"><i class="fas fa-user-cog"></i></a> <!-- Admin icon -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
+    <a th:href="@{/}" class="navbar-brand ps-5 me-0">
+        <img src="img/logo.png" alt="" width="290px" height="75px">
+    </a>
+    <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a th:href="@{/index}" class="nav-item nav-link active">Home</a>
+            <a th:href="@{/about}" class="nav-item nav-link">About</a>
+            
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tourism</a>
+                <div class="dropdown-menu m-0">
+                    <a th:href="@{/tourism}" class="dropdown-item">Tourism</a>
+                   <a th:href="@{/touristsport}" class="dropdown-item">Tourist Spots</a>
+
+                    <a th:href="@{/hotel}" class="dropdown-item">Hotels</a>
+                    <a th:href="@{/Theater}" class="dropdown-item">Theater</a>
+                    <a th:href="@{/ShoppingCenters}" class="dropdown-item">Shopping Centers</a>
+                  
+                </div>
+            </div>
+           
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Education</a>
+                <div class="dropdown-menu m-0">
+                    <a th:href="@{/education}" class="dropdown-item">Education </a>
+                    <a th:href="@{/schools}" class="dropdown-item">Schools </a>
+                    <a th:href="@{/colleges}" class="dropdown-item"> Universities</a>
+                    <a th:href="@{/tsd}" class="dropdown-item">Training & Skill Development</a>
+                    <a th:href="@{/library}" class="dropdown-item">Library</a>
+                    
+                </div>
+            </div>
+            
+            <a th:href="@{/transport}" class="nav-item nav-link">Transportation</a>
+            <a th:href="@{/hospital}" class="nav-item nav-link">Hospitality</a>
+            <a th:href="@{/contact}" class="nav-item nav-link">Contact</a>
+            
+              <div class="nav-item dropdown" >
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                 <img src="https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg" alt="Avatar" class="rounded-circle" style="width: 40px; height: 40px;"></a>
+                <div class="dropdown-menu m-0">
+                
+             
+              
+                     <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    
+                </div>
+            </div>
+          
+            
+        </div>
+    </div>
+</nav>
+
+<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <!-- <h6>Digital Media Agency</h6> -->
+                    <h1 class="gradient-text">Welcome to Education</h1><br>
+                    <p style="text-align: justify;font-size: 20px;color: #080a2f;font-family: Georgia, 'Times New Roman', Times, serif;">Explore Trivandrum's vibrant education landscape, featuring top schools,
+                       renowned universities, esteemed colleges, advanced training and skill development
+                        centers, and a rich library network.Education is the cornerstone of personal
+                         and societal growth, serving as a powerful tool that shapes minds, builds character,
+                          and opens doors to opportunities. It empowers individuals with knowledge, critical 
+                          thinking skills, and the ability to adapt to a constantly changing world.
+                           Through education, people gain the capacity to make informed decisions, 
+                           solve problems, and contribute positively to their communities. </p>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="assets/images/back.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <div id="about" class="about section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="about-left-image  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="assets/images/about1.gif" alt="">
+              </div>
+            </div>
+            <div class="col-lg-6 align-self-center  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+              <div class="about-right-content">
+                <div class="section-heading">
+                  <h6 style="font-size: 35px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">About Us</h6>
+                  <h4 style="font-size:30px ;font-family: 'Times New Roman', Times, serif;">Education <em>Hub</em></h4>
+                  <div class="line-dec"></div>
+                </div>
+                <p style="color: black; font-size: 18px;text-align: justify;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" >Welcome to the educational hub of Smart Metropolis Trivandrum, where we are dedicated
+                   to unraveling the complexities and treasures of Kerala's capital city. Our mission is
+                    to empower residents and visitors alike with knowledge that enriches their urban experience.
+                     Through engaging content and interactive resources
+                  We aim to illuminate Trivandrum's past, present, and future, 
+                  offering insights into its vibrant culture, innovative advancements, 
+                  and practical urban living tips. Join us as we explore and educate, 
+                  fostering a community of informed and inspired individuals ready to navigate 
+                  and thrive in Trivandrum.</p>
+                <div class="row">
+                  <div class="col-lg-4 col-sm-4">
+                    <div class="skill-item first-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
+                     
+                      </div>
+                    </div>
+                  </div>
+                 
+                 
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div id="services" class="services section">
+    <div class="container">
+        <div class="row text-center mb-4">
+            <div class="col-lg-12">
+                <div class="section-heading wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <h6>Our Services</h6>
+                    <h4>Schools in <em>Trivandrum</em></h4>
+                    <div class="line-dec mx-auto"></div>
+                </div>
+            </div>
+        </div>
+        <div class="naccs">
+            <div class="grid">
+                <div class="row">
+                    <div class="col-lg-12">
+           <div class="menu d-flex justify-content-around flex-wrap">
+    <div class="thumb text-center">
+        <span class="icon">
+            <img src="assets/images/icon1.png" alt="" class="img-fluid small-icon">
+        </span>
+        <div>Christ Nagar</div>
+    </div>
+    <div class="thumb text-center">
+        <span class="icon">
+            <img src="assets/images/school.png" alt="" class="img-fluid small-icon">
+        </span>
+        <div>Sarvodhaya Vidhyalaya School</div>
+    </div>
+    <div class="thumb text-center">
+        <span class="icon">
+            <img src="assets/images/university.png" alt="" class="img-fluid small-icon">
+        </span>
+        <div>Trivandrum International</div>
+    </div>
+    <div class="thumb text-center">
+        <span class="icon">
+            <img src="assets/images/schools.png" alt="" class="img-fluid small-icon">
+        </span>
+        <div>Holy Angels</div>
+    </div>
+    <div class="thumb text-center">
+        <span class="icon">
+            <img src="assets/images/openbook.png" alt="" class="img-fluid small-icon">
+        </span>
+        <div>St Joseph School</div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <ul class="nacc">
+                            <li class="active">
+                                <div>
+                                    <div class="thumb">
+                                        <div class="row">
+                                            <div class="col-lg-6 align-self-center">
+                                                <div class="left-text">
+                                                    <h4>Christ Nagar School</h4>
+                                                    <p style="color: #080a2f;">Christ Nagar Higher Secondary School started in 1976 as a private English Medium School in Trivandrum, recognized by the state government of Kerala. Here are the key facilities provided:</p>
+                                                    <div class="ticks-list">
+                                                        <span><i class="fa fa-check"></i> Spacious Classrooms</span>
+                                                        <span><i class="fa fa-check"></i> Science Laboratories</span>
+                                                        <span><i class="fa fa-check"></i> Library</span>
+                                                        <span><i class="fa fa-check"></i> Computer Lab</span>
+                                                        <span><i class="fa fa-check"></i> Sports Facilities</span>
+                                                        <span><i class="fa fa-check"></i> Music and Art Rooms</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 align-self-center">
+                                                <div class="right-image">
+                                                    <img src="assets/images/christnagar.png" alt="" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Repeat similar structure for other schools -->
+                            <li>
+                                <div>
+                                    <div class="thumb">
+                                        <div class="row">
+                                            <div class="col-lg-6 align-self-center">
+                                                <div class="left-text">
+                                                    <h4>Sarvodhaya Vidhyalaya</h4>
+                                                    <p style="color: #080a2f;">Sarvodaya Vidyalaya is known for its commitment to academic excellence. Located in Nalanchira, it offers a nurturing environment.</p>
+                                                    <div class="ticks-list">
+                                                        <span><i class="fa fa-check"></i> Spacious Classrooms</span>
+                                                        <span><i class="fa fa-check"></i> Science Laboratories</span>
+                                                        <span><i class="fa fa-check"></i> Library</span>
+                                                        <span><i class="fa fa-check"></i> Computer Lab</span>
+                                                        <span><i class="fa fa-check"></i> Sports Facilities</span>
+                                                        <span><i class="fa fa-check"></i> Music and Art Rooms</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 align-self-center">
+                                                <div class="right-image">
+                                                    <img src="assets/images/sarvodhaya.jpg" alt="" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Continue adding the rest of the schools in similar fashion -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="portfolio" class="our-portfolio section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="section-heading wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+                    <h1>Universities</h1>
+                    <div class="line-dec"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="loop owl-carousel" id="university-carousel">
+                    <div class="item">
+                        <a href="#">
+                            <div class="portfolio-item">
+                                <div class="image-thumb">
+                                    <img src="assets/images/university1.jpg" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>University College, Trivandrum</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <div class="portfolio-item">
+                                <div class="image-thumb">
+                                    <img src="assets/images/marivanious.jpg" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>Mar Ivanios College</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <div class="portfolio-item">
+                                <div class="image-thumb">
+                                    <img src="assets/images/cet.jpg" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>College of Engineering, Tvm</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <div class="portfolio-item">
+                                <div class="image-thumb">
+                                    <img src="assets/images/allsaints.jpg" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>All Saints' College</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <div class="portfolio-item">
+                                <div class="image-thumb">
+                                    <img src="assets/images/stxavier.jpg" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>St. Xavier's College, Thumba</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="blog" class="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
+                <div class="section-heading text-center">
+                    <h3>Training Skill and Development Centers</h3>
+                    <div class="line-dec"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                <div class="blog-post">
+                    <div class="image-thumb">
+                        <a href="#"><img src="assets/images/caddesk.jpg" alt=""></a>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">CADDesk Trivandrum</span>
+                        <p style="color: #080a2f; text-align: justify;">CADDesk in Trivandrum is a leading training center specializing in computer-aided design (CAD) and related software courses...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                <div class="blog-post">
+                    <div class="image-thumb">
+                        <a href="#"><img src="assets/images/nsti1.png" alt=""></a>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">NSTI W Trivandrum</span>
+                        <p style="color: #080a2f; text-align: justify;">National Skill Training Institute in Trivandrum is a premier institution dedicated to advanced skill development and vocational training...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                <div class="blog-post">
+                    <div class="image-thumb">
+                        <a href="#"><img src="assets/images/itichackai.jpg" alt=""></a>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">Govt ITI Chackai</span>
+                        <p style="color: black; text-align: justify;">Govt ITI Chakai in Trivandrum is an industrial training institute that provides vocational education and skill development...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="portfolio" class="our-portfolio section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="section-heading wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+                    <h1>Libraries</h1>
+                    <div class="line-dec"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="portfolio-items">
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <div class="image-container">
+                                <img src="assets/images/statelibrary.jpg" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>State Central Library</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <div class="image-container">
+                                <img src="assets/images/universitylib.jpg" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>University Library</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <div class="image-container">
+                                <img src="assets/images/sreenarayana.jpg" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>Sree Narayana Memorial</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="ftco-footer ftco-section img" style="background-color: #8B93FF;">
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row mb-5">
+            <div class="col-md-3">
+    <div class="ftco-footer-widget mb-4">
+        <h2 class="ftco-heading-2">Smart Metropolis</h2>
+        <p>Discover the heart of Kerala at Trivandrum, where tradition meets modernity amidst the lush landscapes of India's southwestern coast.</p>
+        <ul class="ftco-footer-social list-unstyled mt-5">
+            <li class="ftco-animate"><a href="#"><span class="fab fa-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fab fa-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fab fa-instagram"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fab fa-linkedin"></span></a></li>
+        </ul>
+        <!-- Add a clearfix to make sure the button is below the icons -->
+        <div class="clearfix"></div>
+        <button class="open-review-btn mt-4" id="openReviewBtn">Rate Your Experience</button>
+    </div>
+</div>
+
+            <div class="col-md-2">
+                <div class="ftco-footer-widget mb-4 ml-md-5">
+                    <h2 class="ftco-heading-2">Main Links</h2>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/index}" class="py-2 d-block">Home</a></li>
+                        <li><a th:href="@{/about}" class="py-2 d-block">About</a></li>
+                        <li><a th:href="@{/tourism}" class="py-2 d-block">Tourism</a></li>
+                        <li><a th:href="@{/transport}" class="py-2 d-block">Transport</a></li>
+                        <li><a th:href="@{/hospital}" class="py-2 d-block">Hospital</a></li>
+                        <li><a th:href="@{/contact}" class="py-2 d-block">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Tourism</h2>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/tourism}" class="py-2 d-block">Tourism</a></li>
+                        <li><a th:href="@{/touristsport}" class="py-2 d-block">Tourism Spots</a></li>
+                        <li><a th:href="@{/hotel}" class="py-2 d-block">Hotels</a></li>
+                        <li><a th:href="@{/Theater}" class="py-2 d-block">Theater</a></li>
+                        <li><a th:href="@{/ShoppingCenters}" class="py-2 d-block">Shopping Centers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Education</h2>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/schools}" class="py-2 d-block">School</a></li>
+                        <li><a th:href="@{/colleges}" class="py-2 d-block">University</a></li>
+                        <li><a th:href="@{/skill-development}" class="py-2 d-block">Skill & Development</a></li>
+                        <li><a th:href="@{/library}" class="py-2 d-block">Library</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Additional Links</h2>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/location-finding}" class="py-2 d-block">Location Finding</a></li>
+                        <li><a th:href="@{/translator}" class="py-2 d-block">Language Translator</a></li>
+                        <li> <button type="button" class="open-review-btn mt-4" data-bs-toggle="modal" data-bs-target="#reviewFormModal">
+            Feedback
+        </button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       <div class="row">
+        <div class="col-md-12">
+            <p style="text-align: center;">&copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by Stack Jet</p>
+        </div>
+    </div>
+    </div>
+</footer>
+
+
+<!-- Review Form Modal -->
+<div class="modal fade" id="reviewFormModal" tabindex="-1" aria-labelledby="reviewFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="row g-0">
+                    <!-- Left Side: Image with Increased Width -->
+                    <div class="col-md-6">
+                        <img src="https://cdn.dribbble.com/users/159535/screenshots/4877142/originmeals-feedback-dribbble.gif" 
+                             alt="Feedback Image" 
+                             class="img-fluid" 
+                             style="height: 100%; object-fit: cover;">
+                    </div>
+                    <!-- Right Side: Form with Box Shadow -->
+                    <div class="col-md-6">
+                        <div class="modal-header" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                            <h5 class="modal-title" id="reviewFormModalLabel">Submit Your Feedback</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <form th:action="@{/submitReview}" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="feedback" class="form-label">Feedback</label>
+        <textarea class="form-control" id="feedback" name="feedback" rows="3" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="file" class="form-label">Upload File</label>
+        <input type="file" class="form-control" id="file" name="file">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <div class="blur-overlay" id="blurOverlay"></div>
+    <div class="notification-box animated" id="notificationBox">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <p>Please rate your experience:</p>
+        <div class="stars" id="stars">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        <div class="emoji animated" id="emoji"></div> <!-- Emoji container -->
+  <!-- Add this form in your HTML -->
+<form id="ratingForm" th:action="@{/ratings/submit}" method="post">
+    <!-- The username will be dynamically set from your Thymeleaf context -->
+    <input type="hidden" name="userName" id="userName" th:value="${currentUserName}"/>
+    <input type="hidden" name="stars" id="starsInput"/>
+    <button type="submit" id="okBtn" class="open-review-btn">OK</button>
+</form>
+
+
+    </div>
+
+<script>
+document.getElementById('okBtn').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    var stars = document.querySelectorAll('.star.selected').length;
+    var userName = "exampleUser"; // Replace with the actual user name logic
+
+    // Set the values in the hidden fields
+    document.getElementById('userName').value = userName;
+    document.getElementById('starsInput').value = stars;
+
+    // Submit the form
+    document.getElementById('ratingForm').submit();
+});
+
+    const openReviewBtn = document.getElementById('openReviewBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const notificationBox = document.getElementById('notificationBox');
+    const blurOverlay = document.getElementById('blurOverlay');
+    const okBtn = document.getElementById('okBtn');
+    let selectedRating = null;
+
+    // Show the notification box and blur overlay when the button is clicked
+    openReviewBtn.addEventListener('click', function() {
+        notificationBox.classList.add('show');
+        blurOverlay.style.display = 'block';
+        setTimeout(() => {
+            blurOverlay.style.opacity = 1;
+        }, 10);
+    });
+
+    // Close the notification box and remove blur when the close button is clicked
+    closeBtn.addEventListener('click', function() {
+        notificationBox.classList.remove('show');
+        blurOverlay.style.opacity = 0;
+        setTimeout(() => {
+            blurOverlay.style.display = 'none';
+        }, 300);
+    });
+
+    // Handle star selection and GIF display
+    const stars = document.querySelectorAll('.star');
+    const emoji = document.getElementById('emoji');
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            stars.forEach(s => s.classList.remove('selected'));
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add('selected');
+            }
+
+            // Update the GIF based on the selected rating
+            switch (index + 1) {
+                case 1:
+                    emoji.style.backgroundImage = 'url("https://cliply.co/wp-content/uploads/2021/03/392103840_SAD_EMOJI_WITH_TEAR_400px.gif")';
+                    break;
+                case 2:
+                    emoji.style.backgroundImage = 'url("https://cliply.co/wp-content/uploads/2021/03/392103390_SAD_EMOJI_400px.gif")';
+                    break;
+                case 3:
+                    emoji.style.backgroundImage = 'url("https://media.tenor.com/kQoFKDYP30kAAAAi/slightly-smiling-face-people.gif")';
+                    break;
+                case 4:
+                    emoji.style.backgroundImage = 'url("https://media.tenor.com/3eDU879uzT4AAAAi/shy-blushing.gif")';
+                    break;
+                case 5:
+                    emoji.style.backgroundImage = 'url("https://media.tenor.com/xmXA1zL88SkAAAAi/dm4uz3-foekoe.gif")';
+                    break;
+            }
+            emoji.classList.add('show');
+            selectedRating = index + 1;
+        });
+    });
+
+    // Handle OK button click
+    okBtn.addEventListener('click', () => {
+        if (selectedRating === null) {
+            alert("Please choose your rating!");
+        } else {
+            alert("Thank you for your rating!");
+            notificationBox.classList.remove('show');
+            blurOverlay.style.opacity = 0;
+            setTimeout(() => {
+                blurOverlay.style.display = 'none';
+            }, 300);
+            
+            // Optionally, you can send the rating to the server
+            fetch('/send-rating', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ rating: selectedRating })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    });
+</script>
+<a href="#" class="btn btn-lg   btn-lg-square rounded-circle back-to-top" ><i class="bi bi-arrow-up"></i></a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/parallax/parallax.min.js"></script>
+<script src="lib/isotope/isotope.pkgd.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<script src="js/main.js"></script>
+
+    <script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "fde24680-b643-4331-bcf6-68a7b0eabdfc", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "f3ca861d-3575-4e8c-830f-887e43210a6b", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script> 
+<!-- Add jQuery and Owl Carousel scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var $carousel = $('#university-carousel');
+
+        $carousel.owlCarousel({
+            items: 3, // Adjust based on your layout
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 3000, // Time between slides
+            autoplayHoverPause: true, // Pause on hover
+        });
+
+        // Optional: Pause the carousel on mouse enter and resume on mouse leave
+        $carousel.on('mouseenter', function() {
+            $carousel.trigger('stop.owl.autoplay');
+        }).on('mouseleave', function() {
+            $carousel.trigger('play.owl.autoplay');
+        });
+    });
+</script>
+
+<!-- Link to Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+</body>
+</html>

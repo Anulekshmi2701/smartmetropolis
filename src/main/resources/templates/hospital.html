@@ -1,0 +1,1276 @@
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Smart Metropolis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <link rel="icon" type="img/x-icon" href="img/idea.png">
+    
+    <!-- Include Bootstrap CSS and Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+.furniture_section .box {
+      margin-top: 45px;
+      background-color: #f7fafa;
+      padding: 25px;
+      border-radius: 5px;
+    }
+
+    .furniture_section .box .img-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 275px;
+      
+    }
+
+    .furniture_section .box .img-box img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .furniture_section .box .detail-box {
+      margin-top: 15px;
+    }
+
+    .furniture_section .box .detail-box h5 {
+      text-transform: uppercase;
+      font-size: 18px;
+    }
+
+    .furniture_section .box .detail-box .price_box {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .furniture_section .box .detail-box .price_box .price_heading {
+      margin-bottom: 0;
+    }
+
+    .furniture_section .box .detail-box .price_box .price_heading span {
+      color: #6bb7be;
+    }
+
+    .furniture_section .box .detail-box .price_box a {
+      color: #6bb7be;
+      text-transform: uppercase;
+      font-size: 15px;
+    }
+
+    .about_section {
+      background-color: #f9fafa;
+    }
+    
+ .blur-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+   .notification-box {
+    display: none;
+    position: fixed;
+    top: 35%; /* Adjusted to be slightly above the center */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 400px; /* Increased width */
+    height: 300px; /* Increased height */
+    text-align: center;
+    z-index: 3;
+}
+
+.notification-box .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Close button on the right */
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ff4c4c;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.notification-box .close-btn:hover {
+    transform: scale(1.2);
+    color: #ff0000;
+}
+
+    .notification-box.show {
+        display: block;
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+
+    .stars {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .star {
+        font-size: 30px;
+        cursor: pointer;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .star:hover {
+        transform: scale(1.5) rotate(15deg);
+        color: #ffcc00;
+    }
+
+    .star.selected {
+        color: #ffcc00;
+        transform: scale(1.3);
+    }
+
+    .emoji {
+        font-size: 50px;
+        margin-top: 15px;
+        height: 100px;
+        width: 100px;
+        background-size: cover;
+        background-position: center;
+        display: none;
+        margin: 20px auto;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .emoji.show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .open-review-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .open-review-btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.1);
+    }
+ /* Centered heading with red underline */
+.section-heading {
+    text-align: center;
+    position: relative;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.section-heading::after {
+    content: "";
+    display: block;
+    width: 15%;
+    height: 3px;
+    background-color: red;
+    margin: 10px auto 0;
+}
+
+/* Scrolling container */
+.scroll-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/* Scrollable content */
+.scroll-content {
+    display: flex;
+    width: calc(300px * 20); /* Adjust based on the total number of duplicated cards */
+    animation: scroll 40s linear infinite; /* Slower speed */
+}
+
+/* Keyframes for scrolling */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause scrolling on hover */
+.scroll-container:hover .scroll-content {
+    animation-play-state: paused; /* Pauses the animation on hover */
+}
+
+/* Card styling */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 0 0 auto;
+    width: 300px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card hover effect */
+.card:hover {
+    transform: translateY(-20px) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Card body */
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Avatar container */
+.avatar-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Avatar image */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Card title */
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    text-align: left;
+}
+
+/* Card text */
+.card-text {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* Image styling */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: auto;
+}
+
+
+
+    .navbar-avatar {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+        }
+
+
+ 
+    
+
+
+    .navbar-avatar {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+   <div class="container-fluid px-0" style="background-color: #050C9C;" id="navbar">
+    <div class="row g-0 d-none d-lg-flex">
+        <!-- Left side with social media links -->
+        <div class="col-lg-6 ps-5 text-start">
+            <div class="h-100 d-inline-flex align-items-center text-white">
+                <span>Follow Us:</span>
+                <a class="btn btn-link text-light" href="https://www.facebook.com/checkpoint/1501092823525282/?next=https%3A%2F%2Fwww.facebook.com%2Flogin%2F"><i class="fab fa-facebook-f"></i></a>
+            
+                <a class="btn btn-link text-light" href="https://www.youtube.com/channel/UCC_uC3UhrHxNTiD27NwlPng"><i class="fab fa-youtube"></i></a>
+                
+                <a class="btn btn-link text-light" href="https://www.linkedin.com/in/smart-metropolis-902aa332a"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-link text-light" href="#"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-link text-light" th:href="@{https://www.google.com/maps/@8.5762071,76.8606208,13z?authuser=0&entry=ttu}"><i class="fas fa-map-marker-alt"></i></a>
+            </div>
+        </div>
+        
+        <!-- Right side with admin icon -->
+        <div class="col-lg-6 pe-5 text-end">
+            <div class="h-100 d-inline-flex align-items-center text-white">
+               <a class="btn btn-link text-light" th:href="@{/admin/login}"><i class="fas fa-user-cog"></i></a> <!-- Admin icon -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
+    <a th:href="@{/}" class="navbar-brand ps-5 me-0">
+        <img src="img/logo.png" alt="" width="290px" height="75px">
+    </a>
+    <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a th:href="@{/index}" class="nav-item nav-link active">Home</a>
+            <a th:href="@{/about}" class="nav-item nav-link">About</a>
+            
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tourism</a>
+                <div class="dropdown-menu m-0">
+                    <a th:href="@{/tourism}" class="dropdown-item">Tourism</a>
+                   <a th:href="@{/touristsport}" class="dropdown-item">Tourist Spots</a>
+
+                    <a th:href="@{/hotel}" class="dropdown-item">Hotels</a>
+                    <a th:href="@{/Theater}" class="dropdown-item">Theater</a>
+                    <a th:href="@{/ShoppingCenters}" class="dropdown-item">Shopping Centers</a>
+                  
+                </div>
+            </div>
+           
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Education</a>
+                <div class="dropdown-menu m-0">
+                    <a th:href="@{/education}" class="dropdown-item">Education </a>
+                    <a th:href="@{/schools}" class="dropdown-item">Schools </a>
+                    <a th:href="@{/colleges}" class="dropdown-item"> Universities</a>
+                    <a th:href="@{/tsd}" class="dropdown-item">Training & Skill Development</a>
+                    <a th:href="@{/library}" class="dropdown-item">Library</a>
+                    
+                </div>
+            </div>
+            
+            <a th:href="@{/transport}" class="nav-item nav-link">Transportation</a>
+            <a th:href="@{/hospital}" class="nav-item nav-link">Hospitality</a>
+            <a th:href="@{/contact}" class="nav-item nav-link">Contact</a>
+            
+              <div class="nav-item dropdown" >
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                 <img src="https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg" alt="Avatar" class="rounded-circle" style="width: 40px; height: 40px;"></a>
+                <div class="dropdown-menu m-0">
+                
+             
+              
+                     <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    
+                </div>
+            </div>
+          
+            
+        </div>
+    </div>
+</nav>
+
+           
+ <!-- About Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-2 align-items-center">
+            <!-- <div class="col-lg-5 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
+                <img class="rounded"  data-wow-delay="0.1s" src="https://neotrack.ai/storage/2023/07/NEOTRACK-GPS-TRACKING.webp">
+            </div> -->
+            <div class="col-lg-5 col-md-3 wow fadeInUp" data-wow-delay="0.3s">
+           
+               
+                <h1> Leading Healthcare in the Heart of Trivandrum</h1>
+                <h3 style="color: black;">Comprehensive Healthcare Services</h3>
+                <p>Our Smart Metropolis platform provides comprehensive details about Trivandrum City Hospital. You can access information about hospital departments, specialist doctors, visiting hours, and emergency services.</p>
+   
+               
+                <a class="btn  py-3 px-4" href="#link">Explore More</a>
+               
+            </div>
+            <div class="col-lg-1 col-md-5 wow fadeInUp" data-wow-delay="0.5s">
+                
+            </div>
+             <div class="col-lg-5 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
+                <img class="rounded"  data-wow-delay="0.1s" src="img/hospital.jpg" style="width: 700px; height: 560px;">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="fs-5 fw-bold" style="text-align: center;">Our Services</p>
+            <h1 class="display-5 mb-5">Healthcare Services in Trivandrum</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-img rounded">
+                        <!-- Placeholder for image if needed -->
+                    </div>
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="img/govt.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Government Hospitals</h4>
+                        <p class="mb-4">Explore government hospitals in Trivandrum offering subsidized healthcare services. Find information on departments, doctors, and patient facilities.</p>
+                        <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-img rounded">
+                        <!-- Placeholder for image if needed -->
+                    </div>
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="img/private.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Private Hospitals</h4>
+                        <p class="mb-4">Discover private hospitals in Trivandrum renowned for specialized treatments and advanced healthcare services. Learn about specialties, booking options, and patient reviews.</p>
+                        <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-img rounded">
+                        <!-- Placeholder for image if needed -->
+                    </div>
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="img/pharmacy.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Clinics and Pharmacies</h4>
+                        <p class="mb-4">Find information on clinics, pharmacies, and healthcare facilities across Trivandrum, including services offered and contact details for easy access.</p>
+                        <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- furniture section -->
+  <section class="furniture_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>Government Hospitals in Trivandrum</h2>
+        <p>Discover the leading hospitals in Trivandrum offering top-quality healthcare services. From multi-specialty hospitals to renowned medical institutes, explore your healthcare options here.</p>
+      </div>
+      <div class="row">
+        <!-- Furniture Item 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box" >
+              <img src="img/Government Hospitals in Trivandrum.jpeg" alt=""style="height:500px;width:800px">
+            </div>
+            <div class="detail-box">
+              <h5>Government Medical College, Thiruvananthapuram</h5>
+              <br>
+              <div class="price_box">
+               
+                <button class="btn btn-primary" data-toggle="modal" data-target="#popup1">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="img/sree.jpg" alt="" style="height:500px;width:800px">
+            </div>
+            <div class="detail-box">
+              <h5>Sree Chitra Tirunal Institute for Medical Sciences & Technology</h5>
+              <div class="price_box">
+               
+                <button class="btn btn-primary" data-toggle="modal" data-target="#popup2">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="img/rcc.jpg" alt=""style="height:500px;width:800px">
+            </div>
+            <div class="detail-box">
+              <h5>Regional Cancer Centre (RCC)</h5>
+              <br>    <br>
+              <div class="price_box">
+               
+                <button class="btn btn-primary" data-toggle="modal" data-target="#popup3">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="img/general.jpg" alt=""style="height:500px;width:800px">
+            </div>
+            <div class="detail-box">
+              <h5>General Hospital, Thiruvananthapuram</h5>
+              <div class="price_box">
+                
+                <button class="btn btn-primary" data-toggle="modal" data-target="#popup4">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="img/women.jpg" alt=""style="height:500px;width:800px">
+            </div>
+            <div class="detail-box">
+              <h5>Women and Children Hospital, Thycaud</h5>
+              <div class="price_box">
+               
+                <button class="btn btn-primary" data-toggle="modal" data-target="#popup5">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="img/mental.jpg" alt=""style="height:500px;width:800px">
+            </div>
+            <div class="detail-box">
+              <h5>Mental Health Center, Peroorkada</h5>
+              <div class="price_box">
+            
+                <button class="btn btn-primary" data-toggle="modal" data-target="#popup6">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+                <!-- furniture section -->
+
+      <div class="heading_container">
+        <h2>Private Hospitals in Trivandrum</h2>
+      <p>Explore the top private hospitals in Trivandrum offering world-class healthcare services. From multi-specialty to super-specialty hospitals, find the best private healthcare providers in the city.</p>
+      </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="box">
+             <div class="img-box">
+              <img src="img/kims.jpg" alt=""style="height:500px;width:800px">
+            </div>
+            <div class="detail-box">
+              <h5>KIMS Health, Trivandrum</h5>
+              <br>
+              <div class="price_box">
+               
+                <button class="btn btn-primary" data-toggle="modal" data-target="#popup7">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="img/annanthapuri.jpg" alt="" style="height:500px;width:800px">
+            </div>
+            <div class="detail-box">
+             <h5>Ananthapuri Hospitals and Research Institute</h5>
+              <div class="price_box">
+               
+                <button class="btn btn-primary" data-toggle="modal" data-target="#popup8">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+               <img src="img/aster.jpg" alt="" style="height:500px;width:800px">
+            </div>
+            <div class="detail-box">
+          <h5>Aster Medicity, Trivandrum</h5>
+              <br>    <br>
+              <div class="price_box">
+               
+                <button class="btn btn-primary" data-toggle="modal" data-target="#popup9">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="img/krishna.jpg" alt="" style="height:500px;width:800px">
+            </div>
+            <div class="detail-box">
+             <h5>Krishna Hospital, Trivandrum</h5>
+              <div class="price_box">
+                
+                <button class="btn btn-primary" data-toggle="modal" data-target="#popup10">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+               <img src="img/sankars.jpg" alt="" style="height:500px;width:800px">
+            </div>
+            <div class="detail-box">
+              <h5>SUT Hospital, Pattom</h5>
+              <div class="price_box">
+               
+                <button class="btn btn-primary" data-toggle="modal" data-target="#popup11">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="img/nims.jpg" alt="" style="height:500px;width:800px">
+            </div>
+            <div class="detail-box">
+           <h5>NIMS Medicity, Trivandrum</h5>
+              <div class="price_box">
+            
+                <button class="btn btn-primary" data-toggle="modal" data-target="#popup12">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modals -->
+        <div class="modal fade" id="popup1" tabindex="-1" role="dialog" aria-labelledby="popup1Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Government Hospitals in Trivandrum</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Established in 1951, this is one of the premier medical institutions in Kerala. It provides specialized care in various departments like cardiology, neurology, oncology, and more. The hospital is renowned for medical education and research, with a range of undergraduate and postgraduate courses.
+</p>
+<p>Location: Medical College P.O., Thiruvananthapuram, Kerala 695011
+</p>
+<p>Contact Email: principal@tvmc.ac.in</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal fade" id="popup2" tabindex="-1" role="dialog" aria-labelledby="popup2Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Sree Chitra Tirunal Institute for Medical Sciences & Technology</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>SCTIMST is a world-renowned institution for cardiac and neurological treatments. It combines cutting-edge research with excellent patient care. SCTIMST is also known for its pioneering work in biomedical technology.</p>
+                 <p>Location: Poojappura, Thiruvananthapuram, Kerala 695012</p>
+                  <p>Contact Email: director@sctimst.ac.in</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal fade" id="popup3" tabindex="-1" role="dialog" aria-labelledby="popup3Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Regional Cancer Centre (RCC)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p> RCC Thiruvananthapuram is one of the top cancer care facilities in South India. Established in 1981, it offers advanced cancer treatment, education, and research. The hospital is known for its affordable treatment and various outreach programs..</p>
+                 <p>Location: Medical College Campus, Thiruvananthapuram, Kerala 695011</p>
+                  <p>Contact Email: info@rcctvm.gov.in</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="popup4" tabindex="-1" role="dialog" aria-labelledby="popup3Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">General Hospital, Thiruvananthapuram</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p> Established in 1864, the General Hospital in Thiruvananthapuram is one of the oldest hospitals in Kerala. It provides basic and specialized health care services at an affordable cost.</p>
+                 <p>Location: General Hospital Road, Pulimoodu, Thiruvananthapuram, Kerala 695035
+</p>
+                  <p>Contact Email: gh.tvm@kerala.gov.in
+
+</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="popup5" tabindex="-1" role="dialog" aria-labelledby="popup3Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Women and Children Hospital, Thycaudm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p> This is one of the key healthcare centers in Thiruvananthapuram for women and children. The hospital is well known for its maternity and pediatric care.</p>
+                 <p>Location: Thycaud, Thiruvananthapuram, Kerala 695014
+</p>
+                  <p>Contact Email: thycaudhospital@kerala.gov.ins
+
+</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+         <div class="modal fade" id="popup6" tabindex="-1" role="dialog" aria-labelledby="popup3Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Mental Health Center, Peroorkada</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>  The Mental Health Center in Peroorkada is one of the leading psychiatric hospitals in Kerala, providing specialized care for mental health issues. The hospital offers various services, including outpatient care, inpatient care, rehabilitation, and counseling services for individuals with mental health conditions. It has a long history of serving the community and plays a crucial role in mental health awareness and treatment in the region.</p>
+                 <p>Location: Peroorkada, Thiruvananthapuram, Kerala 695005
+</p>
+                  <p>Contact Email: mhctvm@gmail.com
+
+</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </section>
+        
+
+     
+        
+        <!-- Modals -->
+        <div class="modal fade" id="popup7" tabindex="-1" role="dialog" aria-labelledby="popup1Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                 <h5 class="modal-title">KIMS Health, Trivandrum</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+            <p>KIMS Health is one of the largest private healthcare providers in Kerala, offering a wide range of specialty services including cardiology, orthopedics, and neurology.</p>
+            <p>Location: Anayara, Trivandrum, Kerala 695029</p>
+            <p>Contact Email: info@kimsglobal.com</p>
+          </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal fade" id="popup8" tabindex="-1" role="dialog" aria-labelledby="popup2Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Ananthapuri Hospitals and Research Institute</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+            <p>Ananthapuri Hospitals is known for its multi-specialty services including nephrology, urology, and cardiology. It offers state-of-the-art treatment facilities.</p>
+            <p>Location: NH Bypass, Thiruvananthapuram, Kerala 695029</p>
+            <p>Contact Email: info@ananthapurihospitals.com</p>
+          </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal fade" id="popup9" tabindex="-1" role="dialog" aria-labelledby="popup3Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Aster Medicity, Trivandrum</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+            <p>Aster Medicity is one of the top super-specialty hospitals in Trivandrum, providing advanced care in oncology, neurology, and critical care.</p>
+            <p>Location: Kochulloor, Thiruvananthapuram, Kerala 695011</p>
+            <p>Contact Email: info@astermedicity.com</p>
+          </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="popup10" tabindex="-1" role="dialog" aria-labelledby="popup3Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Krishna Hospital, Trivandrum</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+            <p>Krishna Hospital offers quality healthcare services with specialties in general medicine, surgery, pediatrics, and more.</p>
+            <p>Location: Pongumoodu, Trivandrum, Kerala 695011</p>
+            <p>Contact Email: info@krishnahospital.com</p>
+          </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="popup11" tabindex="-1" role="dialog" aria-labelledby="popup3Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">UT Hospital, Pattom</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+            <p>SUT Hospital is a multi-specialty hospital providing comprehensive care in cardiology, gastroenterology, and urology.</p>
+            <p>Location: Pattom, Trivandrum, Kerala 695004</p>
+            <p>Contact Email: info@suthospital.com</p>
+          </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+         <div class="modal fade" id="popup12" tabindex="-1" role="dialog" aria-labelledby="popup3Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">NIMS Medicity, Trivandrum</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+             <div class="modal-body">
+            <p>NIMS Medicity is renowned for its super-specialty services in oncology, cardiology, and orthopedics, providing high-end healthcare to patients.</p>
+            <p>Location: Neyyattinkara, Trivandrum, Kerala 695121</p>
+            <p>Contact Email: info@nimsmedicity.com</p>
+          </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </section>
+        
+        
+
+
+  <!-- Include Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<footer class="ftco-footer ftco-section img" style="background-color: #8B93FF;">
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row mb-5">
+            <div class="col-md-3">
+    <div class="ftco-footer-widget mb-4">
+        <h2 class="ftco-heading-2">Smart Metropolis</h2>
+        <p>Discover the heart of Kerala at Trivandrum, where tradition meets modernity amidst the lush landscapes of India's southwestern coast.</p>
+        <ul class="ftco-footer-social list-unstyled mt-5">
+            <li class="ftco-animate"><a href="#"><span class="fab fa-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fab fa-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fab fa-instagram"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fab fa-linkedin"></span></a></li>
+        </ul>
+        <!-- Add a clearfix to make sure the button is below the icons -->
+        <div class="clearfix"></div>
+        <button class="open-review-btn mt-4" id="openReviewBtn">Rate Your Experience</button>
+    </div>
+</div>
+
+            <div class="col-md-2">
+                <div class="ftco-footer-widget mb-4 ml-md-5">
+                    <h2 class="ftco-heading-2">Main Links</h2>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/index}" class="py-2 d-block">Home</a></li>
+                        <li><a th:href="@{/about}" class="py-2 d-block">About</a></li>
+                        <li><a th:href="@{/tourism}" class="py-2 d-block">Tourism</a></li>
+                        <li><a th:href="@{/transport}" class="py-2 d-block">Transport</a></li>
+                        <li><a th:href="@{/hospital}" class="py-2 d-block">Hospital</a></li>
+                        <li><a th:href="@{/contact}" class="py-2 d-block">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Tourism</h2>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/tourism}" class="py-2 d-block">Tourism</a></li>
+                        <li><a th:href="@{/touristsport}" class="py-2 d-block">Tourism Spots</a></li>
+                        <li><a th:href="@{/hotel}" class="py-2 d-block">Hotels</a></li>
+                        <li><a th:href="@{/Theater}" class="py-2 d-block">Theater</a></li>
+                        <li><a th:href="@{/ShoppingCenters}" class="py-2 d-block">Shopping Centers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Education</h2>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/schools}" class="py-2 d-block">School</a></li>
+                        <li><a th:href="@{/colleges}" class="py-2 d-block">University</a></li>
+                        <li><a th:href="@{/skill-development}" class="py-2 d-block">Skill & Development</a></li>
+                        <li><a th:href="@{/library}" class="py-2 d-block">Library</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Additional Links</h2>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/location-finding}" class="py-2 d-block">Location Finding</a></li>
+                        <li><a th:href="@{/translator}" class="py-2 d-block">Language Translator</a></li>
+                        <li> <button type="button" class="open-review-btn mt-4" data-bs-toggle="modal" data-bs-target="#reviewFormModal">
+            Feedback
+        </button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       <div class="row">
+        <div class="col-md-12">
+            <p style="text-align: center;">&copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by Stack Jet</p>
+        </div>
+    </div>
+    </div>
+</footer>
+
+
+<!-- Review Form Modal -->
+<div class="modal fade" id="reviewFormModal" tabindex="-1" aria-labelledby="reviewFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="row g-0">
+                    <!-- Left Side: Image with Increased Width -->
+                    <div class="col-md-6">
+                        <img src="https://cdn.dribbble.com/users/159535/screenshots/4877142/originmeals-feedback-dribbble.gif" 
+                             alt="Feedback Image" 
+                             class="img-fluid" 
+                             style="height: 100%; object-fit: cover;">
+                    </div>
+                    <!-- Right Side: Form with Box Shadow -->
+                    <div class="col-md-6">
+                        <div class="modal-header" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                            <h5 class="modal-title" id="reviewFormModalLabel">Submit Your Feedback</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <form th:action="@{/submitReview}" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="feedback" class="form-label">Feedback</label>
+        <textarea class="form-control" id="feedback" name="feedback" rows="3" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="file" class="form-label">Upload File</label>
+        <input type="file" class="form-control" id="file" name="file">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <div class="blur-overlay" id="blurOverlay"></div>
+    <div class="notification-box animated" id="notificationBox">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <p>Please rate your experience:</p>
+        <div class="stars" id="stars">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        <div class="emoji animated" id="emoji"></div> <!-- Emoji container -->
+  <!-- Add this form in your HTML -->
+<form id="ratingForm" th:action="@{/ratings/submit}" method="post">
+    <!-- The username will be dynamically set from your Thymeleaf context -->
+    <input type="hidden" name="userName" id="userName" th:value="${currentUserName}"/>
+    <input type="hidden" name="stars" id="starsInput"/>
+    <button type="submit" id="okBtn" class="open-review-btn">OK</button>
+</form>
+
+
+    </div>
+
+<script>
+document.getElementById('okBtn').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    var stars = document.querySelectorAll('.star.selected').length;
+    var userName = "exampleUser"; // Replace with the actual user name logic
+
+    // Set the values in the hidden fields
+    document.getElementById('userName').value = userName;
+    document.getElementById('starsInput').value = stars;
+
+    // Submit the form
+    document.getElementById('ratingForm').submit();
+});
+
+    const openReviewBtn = document.getElementById('openReviewBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const notificationBox = document.getElementById('notificationBox');
+    const blurOverlay = document.getElementById('blurOverlay');
+    const okBtn = document.getElementById('okBtn');
+    let selectedRating = null;
+
+    // Show the notification box and blur overlay when the button is clicked
+    openReviewBtn.addEventListener('click', function() {
+        notificationBox.classList.add('show');
+        blurOverlay.style.display = 'block';
+        setTimeout(() => {
+            blurOverlay.style.opacity = 1;
+        }, 10);
+    });
+
+    // Close the notification box and remove blur when the close button is clicked
+    closeBtn.addEventListener('click', function() {
+        notificationBox.classList.remove('show');
+        blurOverlay.style.opacity = 0;
+        setTimeout(() => {
+            blurOverlay.style.display = 'none';
+        }, 300);
+    });
+
+    // Handle star selection and GIF display
+    const stars = document.querySelectorAll('.star');
+    const emoji = document.getElementById('emoji');
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            stars.forEach(s => s.classList.remove('selected'));
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add('selected');
+            }
+
+            // Update the GIF based on the selected rating
+            switch (index + 1) {
+                case 1:
+                    emoji.style.backgroundImage = 'url("https://cliply.co/wp-content/uploads/2021/03/392103840_SAD_EMOJI_WITH_TEAR_400px.gif")';
+                    break;
+                case 2:
+                    emoji.style.backgroundImage = 'url("https://cliply.co/wp-content/uploads/2021/03/392103390_SAD_EMOJI_400px.gif")';
+                    break;
+                case 3:
+                    emoji.style.backgroundImage = 'url("https://media.tenor.com/kQoFKDYP30kAAAAi/slightly-smiling-face-people.gif")';
+                    break;
+                case 4:
+                    emoji.style.backgroundImage = 'url("https://media.tenor.com/3eDU879uzT4AAAAi/shy-blushing.gif")';
+                    break;
+                case 5:
+                    emoji.style.backgroundImage = 'url("https://media.tenor.com/xmXA1zL88SkAAAAi/dm4uz3-foekoe.gif")';
+                    break;
+            }
+            emoji.classList.add('show');
+            selectedRating = index + 1;
+        });
+    });
+
+    // Handle OK button click
+    okBtn.addEventListener('click', () => {
+        if (selectedRating === null) {
+            alert("Please choose your rating!");
+        } else {
+            alert("Thank you for your rating!");
+            notificationBox.classList.remove('show');
+            blurOverlay.style.opacity = 0;
+            setTimeout(() => {
+                blurOverlay.style.display = 'none';
+            }, 300);
+            
+            // Optionally, you can send the rating to the server
+            fetch('/send-rating', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ rating: selectedRating })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    });
+</script>
+<a href="#" class="btn btn-lg   btn-lg-square rounded-circle back-to-top" ><i class="bi bi-arrow-up"></i></a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/parallax/parallax.min.js"></script>
+<script src="lib/isotope/isotope.pkgd.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<script src="js/main.js"></script>
+
+    <script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "fde24680-b643-4331-bcf6-68a7b0eabdfc", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "f3ca861d-3575-4e8c-830f-887e43210a6b", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script> 
+</body>
+</html>ry.js";
+    document.head.appendChild(t);
+  });
+</script> 
+</body>
+</html>
